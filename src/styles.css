@@ -1,0 +1,15 @@
+body{margin:0;background:#faf4ee;font-family:'Public Sans',system-ui,sans-serif}
+a{color:#8a1c2b;text-decoration:none}
+a:hover{color:#c8102e}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes floatin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slidein{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:translateX(0)}}
+input::placeholder{color:#b09aa0}
+button{font-family:inherit}
+.row-donor{transition:background .12s ease}
+.row-donor:hover{background:#faf4ee !important}
+@media (max-width:1240px){
+  .sp-dash{grid-template-columns:200px minmax(0,1fr) !important}
+  .sp-fiche{grid-column:1 / -1 !important; border-top:1px solid #f0e4da}
+  .sp-table{border-right:none !important}
+}

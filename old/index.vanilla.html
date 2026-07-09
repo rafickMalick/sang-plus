@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sang+ — l'outil de mobilisation des donneurs de sang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#faf4ee;font-family:'Public Sans',system-ui,sans-serif}
+a{color:#8a1c2b;text-decoration:none}a:hover{color:#c8102e}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes floatin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slidein{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:translateX(0)}}
+input::placeholder{color:#b09aa0}
+button{font-family:inherit}
+[data-hover-scale]{transition:transform .12s ease}
+.row-donor{transition:background .12s ease}
+.row-donor:hover{background:#faf4ee !important}
+@media (max-width:1240px){
+  .sp-dash{grid-template-columns:200px minmax(0,1fr) !important}
+  .sp-fiche{grid-column:1 / -1 !important; border-top:1px solid #f0e4da}
+  .sp-table{border-right:none !important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:14px 56px; background:#faf4eeee; backdrop-filter:blur(8px); border-bottom:1px solid rgba(67,20,32,.14)">
+  <img src="assets/logo.png" alt="Sang+" style="height:40px; border-radius:8px; display:block">
+  <div style="display:flex; align-items:center; gap:30px; font:500 14px 'Public Sans',sans-serif; color:#431420">
+    <a href="#mission" style="color:#431420">La mission</a>
+    <a href="#campagne" style="color:#431420">Assistance Campagne</a>
+    <a href="#outil" style="color:#431420">L'outil</a>
+    <a href="#impact" style="color:#431420">Impact</a>
+    <a href="#contact" style="background:#431420; color:#f8ddcb; padding:11px 22px; border-radius:4px; font-weight:600">Demander une démo</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div style="display:grid; grid-template-columns:1.05fr 1fr; gap:60px; padding:84px 56px 88px; align-items:center; max-width:1400px; margin:0 auto; box-sizing:border-box">
+  <div>
+    <div style="font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#c8102e; margin-bottom:20px">Outil des autorités de santé · Bénin · Sénégal · Afrique de l'Ouest</div>
+    <h1 style="font:600 58px/1.07 'Newsreader',serif; color:#2b0d15; margin:0 0 24px; text-wrap:pretty">Chaque poche compte.<br>Chaque donneur aussi.</h1>
+    <p style="font:400 17.5px/1.65 'Public Sans',sans-serif; color:#5c4048; margin:0 0 32px; max-width:52ch; text-wrap:pretty">Sang+ aide les ministères de la santé, agences et centres de transfusion à <strong style="color:#431420">recenser, sensibiliser et mobiliser</strong> les donneurs de sang — par SMS et appels vocaux, dans leur langue.</p>
+    <div style="display:flex; gap:14px; align-items:center">
+      <a href="#contact" style="background:#c8102e; color:#fff; padding:15px 28px; border-radius:4px; font:600 15px 'Public Sans',sans-serif">Demander une démo</a>
+      <a href="#campagne" style="border:1.5px solid #431420; color:#431420; padding:14px 26px; border-radius:4px; font:600 15px 'Public Sans',sans-serif">Voir l'outil en action</a>
+    </div>
+    <div style="margin-top:30px; font:400 13px 'Public Sans',sans-serif; color:#8a6f76">Conçu avec les centres nationaux de transfusion sanguine.</div>
+  </div>
+  <div style="position:relative">
+    <img src="assets/photo-don-1.png" alt="Collecte de sang en centre de santé" style="width:100%; height:430px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 20px 50px rgba(43,13,21,.22)">
+    <div style="position:absolute; left:-26px; bottom:-24px; background:#431420; color:#f8ddcb; padding:18px 24px; border-radius:8px; box-shadow:0 14px 34px rgba(43,13,21,.3)">
+      <div style="font:600 30px 'Newsreader',serif">1 don = 3 vies</div>
+      <div style="font:400 12px 'Public Sans',sans-serif; opacity:.75">sensibilisation · recensement · mobilisation</div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<div id="mission" style="display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(67,20,32,.14); border-bottom:1px solid rgba(67,20,32,.14); max-width:1400px; margin:0 auto">
+  <div style="padding:42px 44px; border-right:1px solid rgba(67,20,32,.14)">
+    <div style="font:600 13px 'Public Sans',sans-serif; color:#c8102e; margin-bottom:10px">01 — Recenser</div>
+    <div style="font:500 22px 'Newsreader',serif; color:#2b0d15; margin-bottom:8px">Une base régionale de donneurs</div>
+    <div style="font:400 14px/1.6 'Public Sans',sans-serif; color:#5c4048">Groupes sanguins, historique de dons, localisation — une vue fiable des donneurs de chaque région.</div>
+  </div>
+  <div style="padding:42px 44px; border-right:1px solid rgba(67,20,32,.14)">
+    <div style="font:600 13px 'Public Sans',sans-serif; color:#c8102e; margin-bottom:10px">02 — Sensibiliser</div>
+    <div style="font:500 22px 'Newsreader',serif; color:#2b0d15; margin-bottom:8px">Des messages santé qui parlent</div>
+    <div style="font:400 14px/1.6 'Public Sans',sans-serif; color:#5c4048">Wolof, fon, dendi, yoruba, pulaar… la sensibilisation porte quand elle est dite dans la langue du donneur.</div>
+  </div>
+  <div style="padding:42px 44px">
+    <div style="font:600 13px 'Public Sans',sans-serif; color:#c8102e; margin-bottom:10px">03 — Mobiliser</div>
+    <div style="font:500 22px 'Newsreader',serif; color:#2b0d15; margin-bottom:8px">Des campagnes qui remplissent</div>
+    <div style="font:400 14px/1.6 'Public Sans',sans-serif; color:#5c4048">Une collecte régionale se lance en minutes : Sang+ contacte les donneurs par SMS ou appel vocal.</div>
+  </div>
+</div>
+
+<!-- ASSISTANCE CAMPAGNE -->
+<div id="campagne" style="background:#431420; padding:80px 56px">
+  <div style="max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1fr 1.15fr; gap:56px; align-items:center">
+    <div>
+      <div style="font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#e08a96; margin-bottom:16px">Fonctionnalité phare</div>
+      <h2 style="font:600 40px/1.15 'Newsreader',serif; color:#f8ddcb; margin:0 0 18px; text-wrap:pretty">Assistance Campagne : une collecte régionale en trois gestes</h2>
+      <p style="font:400 15.5px/1.7 'Public Sans',sans-serif; color:#d9b8a8; margin:0 0 28px; text-wrap:pretty">Choisissez la région, la langue et le canal. Sang+ contacte automatiquement les donneurs recensés — et vous suivez les réponses en temps réel.</p>
+      <div style="display:grid; gap:14px; font:400 14.5px/1.5 'Public Sans',sans-serif; color:#f8ddcb">
+        <div style="display:flex; gap:12px"><span style="font:600 15px 'Newsreader',serif; color:#e08a96">1.</span>Choisissez la ville de collecte sur la carte du pays</div>
+        <div style="display:flex; gap:12px"><span style="font:600 15px 'Newsreader',serif; color:#e08a96">2.</span>Choisissez la langue et le canal (SMS ou appel vocal)</div>
+        <div style="display:flex; gap:12px"><span style="font:600 15px 'Newsreader',serif; color:#e08a96">3.</span>Sang+ contacte les donneurs et recense les réponses</div>
+      </div>
+      <div style="margin-top:26px; font:400 12.5px 'Public Sans',sans-serif; color:#a97f8b">Essayez la démo ci-contre — elle est cliquable.</div>
+    </div>
+
+    <div style="background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.35)">
+      <div style="display:flex; align-items:center; gap:8px; padding:12px 16px; background:#f2e8e0; border-bottom:1px solid #e4d4c8">
+        <span style="width:10px;height:10px;border-radius:50%;background:#e0b4ba"></span><span style="width:10px;height:10px;border-radius:50%;background:#e8cdb9"></span><span style="width:10px;height:10px;border-radius:50%;background:#cdd8c4"></span>
+        <span style="margin-left:8px; font:500 12px 'Public Sans',sans-serif; color:#8a6f76">Sang+ · Assistance Campagne</span>
+      </div>
+      <div id="campaign-body" style="padding:22px 24px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- OUTIL : MOCKUP PC CONTACT DONNEURS -->
+<div id="outil" style="background:#f2e8e0; padding:84px 56px">
+  <div style="max-width:1400px; margin:0 auto">
+    <div style="text-align:center; margin-bottom:44px">
+      <div style="font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#c8102e; margin-bottom:14px">L'outil au quotidien</div>
+      <h2 style="font:600 40px/1.15 'Newsreader',serif; color:#2b0d15; margin:0 0 12px">Le poste de pilotage de vos donneurs</h2>
+      <p style="font:400 15.5px/1.6 'Public Sans',sans-serif; color:#5c4048; margin:0 auto; max-width:64ch; text-wrap:pretty">Recherchez un donneur, voyez son historique, contactez-le en un clic — dans sa langue. <strong style="color:#431420">Cliquez sur un donneur</strong> pour voir sa fiche.</p>
+    </div>
+
+    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 30px 80px rgba(43,13,21,.2); border:1px solid #e4d4c8">
+      <div style="display:flex; align-items:center; gap:8px; padding:12px 18px; background:#2b0d15">
+        <span style="width:11px;height:11px;border-radius:50%;background:#e0656f"></span><span style="width:11px;height:11px;border-radius:50%;background:#e8b078"></span><span style="width:11px;height:11px;border-radius:50%;background:#8fbf8a"></span>
+        <div style="flex:1; display:flex; justify-content:center">
+          <span style="background:#431420; color:#d9b8a8; font:400 12px 'Public Sans',sans-serif; padding:6px 40px; border-radius:6px">app.sang-plus.org/donneurs</span>
+        </div>
+        <span style="display:flex; align-items:center; gap:6px; font:600 11px 'Public Sans',sans-serif; color:#8fbf8a"><span style="width:7px;height:7px;border-radius:50%;background:#8fbf8a; animation:pulse 1.6s infinite"></span>LIVE</span>
+      </div>
+
+      <div class="sp-dash" style="display:grid; grid-template-columns:200px minmax(0,1fr) minmax(280px,340px); min-height:520px">
+        <!-- sidebar -->
+        <div style="background:#431420; padding:20px 0; display:flex; flex-direction:column; gap:2px">
+          <img src="assets/logo.png" alt="Sang+" style="height:30px; border-radius:6px; display:block; margin:0 0 22px 18px; align-self:flex-start">
+          <div style="padding:11px 18px; background:#5a2230; color:#f8ddcb; font:600 13.5px 'Public Sans',sans-serif; border-left:3px solid #c8102e">Donneurs</div>
+          <div style="padding:11px 18px; color:#c99aa6; font:500 13.5px 'Public Sans',sans-serif; border-left:3px solid transparent; cursor:pointer">Campagnes</div>
+          <div style="padding:11px 18px; color:#c99aa6; font:500 13.5px 'Public Sans',sans-serif; border-left:3px solid transparent; cursor:pointer">Messages</div>
+          <div style="padding:11px 18px; color:#c99aa6; font:500 13.5px 'Public Sans',sans-serif; border-left:3px solid transparent; cursor:pointer">Statistiques</div>
+          <div style="margin-top:auto; padding:14px 18px; font:400 11px 'Public Sans',sans-serif; color:#8a5f6b">CNTS Cotonou · admin</div>
+        </div>
+
+        <!-- table -->
+        <div class="sp-table" style="padding:22px 26px; border-right:1px solid #f0e4da; min-width:0; overflow:hidden">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px">
+            <div style="font:600 17px 'Public Sans',sans-serif; color:#2b0d15; white-space:nowrap">Donneurs recensés <span style="font:400 13px 'Public Sans',sans-serif; color:#8a6f76">· 12 400</span></div>
+            <div style="display:flex; gap:8px">
+              <span style="border:1px solid #e4d4c8; border-radius:6px; padding:8px 14px; font:400 13px 'Public Sans',sans-serif; color:#8a6f76; background:#faf4ee">🔍 Rechercher un donneur…</span>
+              <span style="border:1px solid #e4d4c8; border-radius:6px; padding:8px 12px; font:500 13px 'Public Sans',sans-serif; color:#431420; background:#fff; cursor:pointer">Filtres ▾</span>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1.6fr .6fr 1.2fr 1fr 1.1fr; gap:0 12px; padding:9px 14px; font:600 10.5px 'Public Sans',sans-serif; letter-spacing:.08em; text-transform:uppercase; color:#8a6f76; border-bottom:1px solid #f0e4da">
+            <span>Nom</span><span>Groupe</span><span>Commune</span><span>Dernier don</span><span>Statut</span>
+          </div>
+          <div id="donor-rows"></div>
+          <div style="display:flex; align-items:center; gap:8px; margin-top:14px; font:400 12px 'Public Sans',sans-serif; color:#8a6f76">
+            <span style="width:7px;height:7px;border-radius:50%;background:#3d8a5f; animation:pulse 1.6s infinite"></span>
+            214 réponses « OUI » reçues aujourd'hui · campagne Cotonou en cours
+          </div>
+        </div>
+
+        <!-- fiche donneur -->
+        <div id="donor-fiche" class="sp-fiche" style="padding:22px 24px; background:#faf4ee; display:flex; flex-direction:column; gap:14px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO FULL BLEED -->
+<div style="position:relative">
+  <img src="assets/photo-campagne.png" alt="Campagne mobile de don de sang" style="width:100%; height:460px; object-fit:cover; display:block">
+  <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(43,13,21,.82), rgba(43,13,21,.15))"></div>
+  <div style="position:absolute; left:0; right:0; bottom:0; padding:0 56px 52px; max-width:1400px; margin:0 auto; box-sizing:border-box">
+    <div style="font:500 34px/1.25 'Newsreader',serif; color:#f8ddcb; max-width:26ch; text-wrap:balance">« Le sang ne se fabrique pas. Il se donne. »</div>
+    <div style="font:400 14px 'Public Sans',sans-serif; color:#d9b8a8; margin-top:12px">Campagne mobile · Parakou, Bénin</div>
+  </div>
+</div>
+
+<!-- IMPACT -->
+<div id="impact" style="display:grid; grid-template-columns:repeat(4,1fr); padding:64px 56px; border-bottom:1px solid rgba(67,20,32,.14); max-width:1400px; margin:0 auto; box-sizing:border-box">
+  <div style="text-align:center"><div style="font:600 50px 'Newsreader',serif; color:#2b0d15">12 400</div><div style="font:500 13px 'Public Sans',sans-serif; color:#8a6f76">donneurs recensés</div></div>
+  <div style="text-align:center; border-left:1px solid rgba(67,20,32,.14)"><div style="font:600 50px 'Newsreader',serif; color:#2b0d15">38</div><div style="font:500 13px 'Public Sans',sans-serif; color:#8a6f76">campagnes régionales</div></div>
+  <div style="text-align:center; border-left:1px solid rgba(67,20,32,.14)"><div style="font:600 50px 'Newsreader',serif; color:#c8102e">31 200</div><div style="font:500 13px 'Public Sans',sans-serif; color:#8a6f76">poches collectées</div></div>
+  <div style="text-align:center; border-left:1px solid rgba(67,20,32,.14)"><div style="font:600 50px 'Newsreader',serif; color:#c8102e">6</div><div style="font:500 13px 'Public Sans',sans-serif; color:#8a6f76">langues locales</div></div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" style="display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; padding:80px 56px; max-width:1400px; margin:0 auto; box-sizing:border-box">
+  <img src="assets/photo-don-2.png" alt="Donneuse au centre de don" style="width:100%; height:360px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 16px 40px rgba(43,13,21,.18)">
+  <div>
+    <h2 style="font:600 38px/1.15 'Newsreader',serif; color:#2b0d15; margin:0 0 14px; text-wrap:pretty">Vous êtes une autorité de santé ?</h2>
+    <p style="font:400 15.5px/1.65 'Public Sans',sans-serif; color:#5c4048; margin:0 0 28px; max-width:48ch; text-wrap:pretty">Découvrez comment Sang+ peut équiper vos centres de transfusion. Démo personnalisée avec vos données régionales, installation en moins d'une semaine.</p>
+    <div style="display:flex; gap:10px">
+      <input placeholder="votre.email@sante.gouv" style="flex:1; max-width:320px; padding:14px 16px; border:1.5px solid #d8c3b5; border-radius:4px; font:400 14px 'Public Sans',sans-serif; background:#fff; color:#2b0d15; outline:none">
+      <span style="background:#431420; color:#f8ddcb; padding:14px 24px; border-radius:4px; font:600 14px 'Public Sans',sans-serif; cursor:pointer; white-space:nowrap">Être recontacté</span>
+    </div>
+    <div style="margin-top:18px; font:400 12.5px 'Public Sans',sans-serif; color:#8a6f76">Ou écrivez-nous : <a href="mailto:contact@sang-plus.org">contact@sang-plus.org</a></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="background:#2b0d15; display:flex; align-items:center; justify-content:space-between; padding:22px 56px">
+  <img src="assets/logo.png" alt="Sang+" style="height:28px; border-radius:6px; display:block">
+  <div style="font:400 12.5px 'Public Sans',sans-serif; color:#a97f8b">Sang+ — l'outil de mobilisation des donneurs de sang · Bénin · Sénégal · © 2026</div>
+</div>
+
+<script>
+// ---- Data (ported from the design's DCLogic) ----
+const REGIONS = [
+  { name: 'Dakar',   pays: 'Sénégal', code: 'SN', donneurs: 4820, langs: ['wolof', 'pulaar', 'français'] },
+  { name: 'Thiès',   pays: 'Sénégal', code: 'SN', donneurs: 1930, langs: ['wolof', 'pulaar', 'français'] },
+  { name: 'Cotonou', pays: 'Bénin',   code: 'BJ', donneurs: 3410, langs: ['fon', 'yoruba', 'français'] },
+  { name: 'Parakou', pays: 'Bénin',   code: 'BJ', donneurs: 1260, langs: ['dendi', 'fon', 'français'] }
+];
+
+function msg(lang, ville) {
+  const M = {
+    wolof:     `Jàmm nga am ! Sang+ : kampaañ don de sang bu ${ville}, gaawu 14 septembre, 8h–16h. Sa deret mën na musal 3 bakkan. Tontu OUI ngir bindu.`,
+    pulaar:    `Jam waali ! Sang+ : kampaañ dokkal ƴiiƴam to ${ville}, aset 14 septembre. Ƴiiƴam maa ina hisna 3 fittaandu. Jaabo OUI.`,
+    fon:       `Mi kudo ! Sang+ : don de sang ɖo ${ville}, samedi 14 septembre. Hùn towe sixu hwlɛn gbɛ 3. Yi gbè OUI.`,
+    yoruba:    `Ẹ kú ọjọ́ ! Sang+ : ìpolongo ìtọrẹ ẹ̀jẹ̀ ní ${ville}, Sátidé 14 sept. Ẹ̀jẹ̀ yín lè gba ẹ̀mí mẹ́ta là. Fèsì OUI.`,
+    dendi:     `Fofo ! Sang+ : campagne don de sang ${ville}, asibiti 14 septembre. Kuri ni ga hin ka fundi hinza faaba. Tuuru OUI.`,
+    'français':`Bonjour ! Sang+ : campagne de don de sang à ${ville}, samedi 14 septembre, 8h–16h. Votre don peut sauver 3 vies. Répondez OUI pour vous inscrire.`
+  };
+  return M[lang] || M['français'];
+}
+
+const DONORS = [
+  { name: 'Awa Diallo',       groupe: 'O+',  commune: 'Dakar-Plateau',     ville: 'Dakar',   lastDon: 'il y a 4 mois',  lang: 'wolof',    phone: '+221 77 123 45 67', status: 'A répondu OUI' },
+  { name: 'Kofi Ahouansou',   groupe: 'A−',  commune: 'Cotonou-Akpakpa',   ville: 'Cotonou', lastDon: 'il y a 7 mois',  lang: 'fon',      phone: '+229 97 42 18 30', status: 'Contacté' },
+  { name: 'Mariama Sow',      groupe: 'B+',  commune: 'Thiès-Nord',        ville: 'Thiès',   lastDon: 'il y a 3 mois',  lang: 'pulaar',   phone: '+221 76 908 22 14', status: 'À contacter' },
+  { name: 'Sègbè Hounkpatin', groupe: 'O−',  commune: 'Cotonou-Cadjèhoun', ville: 'Cotonou', lastDon: 'il y a 11 mois', lang: 'fon',      phone: '+229 66 05 77 91', status: 'À contacter' },
+  { name: 'Adjara Boni',      groupe: 'AB+', commune: 'Parakou-Zongo',     ville: 'Parakou', lastDon: 'il y a 5 mois',  lang: 'dendi',    phone: '+229 94 31 60 27', status: 'Contacté' },
+  { name: 'Yacine Ndiaye',    groupe: 'O+',  commune: 'Dakar-Médina',      ville: 'Dakar',   lastDon: 'il y a 2 mois',  lang: 'wolof',    phone: '+221 78 555 09 83', status: 'A répondu OUI' }
+];
+
+const initials = (n) => n.split(' ').map(w => w[0]).join('');
+
+// ---- State ----
+const state = {
+  campaign: { step: 'carte', country: 'Bénin', region: 'Cotonou', lang: 'fon', canal: 'sms' },
+  selDonor: 0,
+  sentIds: {}
+};
+
+const PILL_ON  = { bg: '#431420', fg: '#f8ddcb', bd: '#431420' };
+const PILL_OFF = { bg: '#ffffff', fg: '#431420', bd: '#d8c3b5' };
+const pill = (active) => active ? PILL_ON : PILL_OFF;
+
+// ================= CAMPAIGN ASSISTANT =================
+function pin(onClick, leftPct, topPct, label, reverse) {
+  const base = reverse
+    ? 'transform:translate(calc(-100% + 7px),-50%); flex-direction:row-reverse'
+    : 'transform:translate(-7px,-50%)';
+  const scaled = reverse
+    ? 'translate(calc(-100% + 7px),-50%) scale(1.05)'
+    : 'translate(-7px,-50%) scale(1.05)';
+  const btn = document.createElement('button');
+  btn.setAttribute('data-hover-scale', scaled);
+  btn.style.cssText = `position:absolute; left:${leftPct}%; top:${topPct}%; ${base}; background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:7px; padding:0`;
+  btn.innerHTML =
+    `<span style="position:relative; width:14px; height:14px; flex:none"><span style="position:absolute; inset:-6px; border-radius:50%; background:#c8102e; opacity:.3; animation:pulse 1.6s infinite"></span><span style="position:absolute; inset:1px; border-radius:50%; background:#c8102e; border:2.5px solid #fff; box-sizing:border-box"></span></span>` +
+    `<span style="background:#fff; color:#431420; font:600 12px 'Public Sans',sans-serif; padding:5px 10px; border-radius:999px; box-shadow:0 3px 10px rgba(43,13,21,.28); white-space:nowrap">${label}</span>`;
+  btn.onclick = onClick;
+  return btn;
+}
+
+function pickCity(name) {
+  const r = REGIONS.find(x => x.name === name);
+  state.campaign = Object.assign({}, state.campaign, { region: r.name, lang: r.langs[0], country: r.pays, step: 'config' });
+  renderCampaign();
+}
+
+function renderCampaign() {
+  const c = state.campaign;
+  const region = REGIONS.find(r => r.name === c.region) || REGIONS[0];
+  const lang = region.langs.includes(c.lang) ? c.lang : region.langs[0];
+  const body = document.getElementById('campaign-body');
+  body.innerHTML = '';
+
+  if (c.step === 'carte') {
+    const wrap = document.createElement('div');
+    wrap.style.animation = 'slidein .35s ease';
+
+    const tabSN = pill(c.country === 'Sénégal');
+    const tabBJ = pill(c.country === 'Bénin');
+    const head = document.createElement('div');
+    head.style.cssText = 'display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px';
+    head.innerHTML =
+      `<div style="font:600 11px 'Public Sans',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:#8a6f76">1 · Choisissez la région sur la carte</div>` +
+      `<div style="display:flex; gap:6px">` +
+      `<button id="tab-sn" style="padding:7px 14px; border-radius:999px; border:1px solid ${tabSN.bd}; background:${tabSN.bg}; color:${tabSN.fg}; font:600 12.5px 'Public Sans',sans-serif; cursor:pointer">Sénégal</button>` +
+      `<button id="tab-bj" style="padding:7px 14px; border-radius:999px; border:1px solid ${tabBJ.bd}; background:${tabBJ.bg}; color:${tabBJ.fg}; font:600 12.5px 'Public Sans',sans-serif; cursor:pointer">Bénin</button>` +
+      `</div>`;
+    wrap.appendChild(head);
+    head.querySelector('#tab-sn').onclick = () => { state.campaign = Object.assign({}, c, { country: 'Sénégal' }); renderCampaign(); };
+    head.querySelector('#tab-bj').onclick = () => { state.campaign = Object.assign({}, c, { country: 'Bénin' }); renderCampaign(); };
+
+    const map = document.createElement('div');
+    map.style.cssText = 'position:relative; width:100%; aspect-ratio:4/3; border-radius:10px; overflow:hidden; border:1px solid #e4d4c8; background:#f7efe8';
+    if (c.country === 'Sénégal') {
+      map.innerHTML = `<img src="assets/carte-senegal.png" alt="Carte du Sénégal" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block">`;
+      map.appendChild(pin(() => pickCity('Dakar'), 19, 45, 'Dakar · 4 820 donneurs', false));
+      map.appendChild(pin(() => pickCity('Thiès'), 27, 36, 'Thiès · 1 930 donneurs', false));
+    } else {
+      map.innerHTML = `<img src="assets/carte-benin.png" alt="Carte du Bénin" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block">`;
+      map.appendChild(pin(() => pickCity('Parakou'), 55, 52, 'Parakou · 1 260 donneurs', true));
+      map.appendChild(pin(() => pickCity('Cotonou'), 50, 86, 'Cotonou · 3 410 donneurs', true));
+    }
+    wrap.appendChild(map);
+
+    const hint = document.createElement('div');
+    hint.style.cssText = "margin-top:12px; font:400 12.5px 'Public Sans',sans-serif; color:#8a6f76; text-align:center";
+    hint.textContent = 'Cliquez sur une ville pour préparer la campagne →';
+    wrap.appendChild(hint);
+
+    body.appendChild(wrap);
+    return;
+  }
+
+  // ---- config step ----
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'animation:slidein .35s ease; display:grid; gap:16px';
+
+  const top = document.createElement('div');
+  top.style.cssText = 'display:flex; align-items:center; gap:12px';
+  top.innerHTML =
+    `<button id="cmp-back" style="background:#f7efe8; border:1px solid #e4d4c8; color:#431420; font:600 12.5px 'Public Sans',sans-serif; padding:7px 13px; border-radius:999px; cursor:pointer">← Carte</button>` +
+    `<div style="font:600 15px 'Public Sans',sans-serif; color:#2b0d15">Campagne · ${region.name} <span style="font:400 12.5px 'Public Sans',sans-serif; color:#8a6f76">(${region.pays})</span></div>`;
+  wrap.appendChild(top);
+  top.querySelector('#cmp-back').onclick = () => { state.campaign = Object.assign({}, c, { step: 'carte' }); renderCampaign(); };
+
+  // language pills
+  const langBox = document.createElement('div');
+  langBox.innerHTML = `<div style="font:600 11px 'Public Sans',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:#8a6f76; margin-bottom:8px">2 · Langue du message</div>`;
+  const langRow = document.createElement('div');
+  langRow.style.cssText = 'display:flex; flex-wrap:wrap; gap:8px';
+  region.langs.forEach(l => {
+    const s = pill(l === lang);
+    const b = document.createElement('button');
+    b.style.cssText = `padding:8px 15px; border-radius:999px; border:1px solid ${s.bd}; background:${s.bg}; color:${s.fg}; font:500 13px 'Public Sans',sans-serif; cursor:pointer; text-transform:capitalize`;
+    b.textContent = l;
+    b.onclick = () => { state.campaign = Object.assign({}, c, { lang: l }); renderCampaign(); };
+    langRow.appendChild(b);
+  });
+  langBox.appendChild(langRow);
+  wrap.appendChild(langBox);
+
+  // canal pills
+  const canalBox = document.createElement('div');
+  canalBox.innerHTML = `<div style="font:600 11px 'Public Sans',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:#8a6f76; margin-bottom:8px">3 · Canal</div>`;
+  const canalRow = document.createElement('div');
+  canalRow.style.cssText = 'display:flex; gap:8px';
+  [{ id: 'sms', name: 'SMS' }, { id: 'appel', name: 'Appel vocal' }].forEach(ch => {
+    const s = pill(ch.id === c.canal);
+    const b = document.createElement('button');
+    b.style.cssText = `padding:8px 15px; border-radius:999px; border:1px solid ${s.bd}; background:${s.bg}; color:${s.fg}; font:500 13px 'Public Sans',sans-serif; cursor:pointer`;
+    b.textContent = ch.name;
+    b.onclick = () => { state.campaign = Object.assign({}, c, { canal: ch.id }); renderCampaign(); };
+    canalRow.appendChild(b);
+  });
+  canalBox.appendChild(canalRow);
+  wrap.appendChild(canalBox);
+
+  // preview
+  const message = msg(lang, region.name);
+  const preview = document.createElement('div');
+  if (c.canal === 'sms') {
+    preview.innerHTML =
+      `<div style="background:#f7efe8; border:1px solid #e4d4c8; border-radius:10px; padding:14px 16px">` +
+      `<div style="font:500 11px 'Public Sans',sans-serif; color:#8a6f76; margin-bottom:8px">Aperçu SMS · <span style="text-transform:capitalize">${lang}</span></div>` +
+      `<div style="background:#431420; color:#f8ddcb; border-radius:12px 12px 12px 3px; padding:12px 14px; font:400 13.5px/1.55 'Public Sans',sans-serif; max-width:46ch">${message}</div>` +
+      `</div>`;
+  } else {
+    preview.innerHTML =
+      `<div style="background:#f7efe8; border:1px solid #e4d4c8; border-radius:10px; padding:14px 16px">` +
+      `<div style="font:500 11px 'Public Sans',sans-serif; color:#8a6f76; margin-bottom:10px">Appel vocal · script lu en <span style="text-transform:capitalize">${lang}</span> (voix locale)</div>` +
+      `<div style="display:flex; align-items:center; gap:10px; margin-bottom:10px">` +
+      `<span style="width:34px; height:34px; border-radius:50%; background:#c8102e; color:#fff; display:flex; align-items:center; justify-content:center; font:600 14px 'Public Sans',sans-serif">▶</span>` +
+      `<span style="display:flex; align-items:flex-end; gap:3px"><span style="width:4px;height:8px;background:#c8102e;border-radius:2px"></span><span style="width:4px;height:16px;background:#c8102e;border-radius:2px"></span><span style="width:4px;height:11px;background:#c8102e;border-radius:2px"></span><span style="width:4px;height:20px;background:#c8102e;border-radius:2px"></span><span style="width:4px;height:9px;background:#c8102e;border-radius:2px"></span><span style="width:4px;height:14px;background:#c8102e;border-radius:2px"></span><span style="width:4px;height:6px;background:#c8102e;border-radius:2px"></span></span>` +
+      `<span style="font:400 12px 'Public Sans',sans-serif; color:#8a6f76">0:22</span>` +
+      `</div>` +
+      `<div style="font:italic 400 13px/1.55 'Newsreader',serif; color:#5c4048">« ${message} »</div>` +
+      `</div>`;
+  }
+  wrap.appendChild(preview);
+
+  // reach + launch
+  const foot = document.createElement('div');
+  foot.style.cssText = 'display:flex; align-items:center; justify-content:space-between; gap:14px';
+  foot.innerHTML =
+    `<div style="font:400 13px 'Public Sans',sans-serif; color:#5c4048">≈ <strong style="color:#431420">${region.donneurs.toLocaleString('fr-FR')}</strong> donneurs recensés à ${region.name} (${region.pays})</div>` +
+    `<span style="background:#c8102e; color:#fff; padding:11px 20px; border-radius:4px; font:600 13.5px 'Public Sans',sans-serif; cursor:pointer; white-space:nowrap">Lancer la campagne</span>`;
+  wrap.appendChild(foot);
+
+  const note = document.createElement('div');
+  note.style.cssText = "font:400 10.5px 'Public Sans',sans-serif; color:#b09aa0";
+  note.textContent = "Messages d'exemple — traductions validées avec des locuteurs natifs avant envoi.";
+  wrap.appendChild(note);
+
+  body.appendChild(wrap);
+}
+
+// ================= DONOR DASHBOARD =================
+const ST_COLORS = {
+  'A répondu OUI': { bg: '#e7f2ea', fg: '#2f6e4b' },
+  'Contacté':      { bg: '#fdf1dc', fg: '#9a6a1e' },
+  'À contacter':   { bg: '#fbe9ec', fg: '#a8283a' }
+};
+
+function renderDonors() {
+  const rows = document.getElementById('donor-rows');
+  rows.innerHTML = '';
+  DONORS.forEach((d, i) => {
+    const c = ST_COLORS[d.status];
+    const active = i === state.selDonor;
+    const row = document.createElement('div');
+    row.className = 'row-donor';
+    row.style.cssText = `display:grid; grid-template-columns:1.6fr .6fr 1.2fr 1fr 1.1fr; gap:0 12px; align-items:center; padding:12px 14px; border-bottom:1px solid #f7efe8; cursor:pointer; background:${active ? '#faf4ee' : '#ffffff'}; border-left:3px solid ${active ? '#c8102e' : 'transparent'}`;
+    row.innerHTML =
+      `<span style="display:flex; align-items:center; gap:10px; min-width:0"><span style="flex:none; width:30px;height:30px;border-radius:50%;background:#f2e8e0;color:#431420;display:flex;align-items:center;justify-content:center;font:600 11.5px 'Public Sans',sans-serif">${initials(d.name)}</span><span style="font:600 13.5px 'Public Sans',sans-serif; color:#2b0d15; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">${d.name}</span></span>` +
+      `<span style="font:600 12.5px 'Public Sans',sans-serif; color:#c8102e">${d.groupe}</span>` +
+      `<span style="font:400 13px 'Public Sans',sans-serif; color:#5c4048; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">${d.commune}</span>` +
+      `<span style="font:400 13px 'Public Sans',sans-serif; color:#5c4048; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">${d.lastDon}</span>` +
+      `<span><span style="font:600 11px 'Public Sans',sans-serif; padding:5px 10px; border-radius:999px; background:${c.bg}; color:${c.fg}; white-space:nowrap">${d.status}</span></span>`;
+    row.onclick = () => { state.selDonor = i; renderDonors(); renderFiche(); };
+    rows.appendChild(row);
+  });
+}
+
+function renderFiche() {
+  const i = state.selDonor;
+  const d = DONORS[i];
+  const replied = d.status === 'A répondu OUI';
+  const sent = !!state.sentIds[i];
+  const fiche = document.getElementById('donor-fiche');
+  fiche.innerHTML =
+    `<div style="display:flex; align-items:center; gap:12px">` +
+      `<span style="width:46px;height:46px;border-radius:50%;background:#431420;color:#f8ddcb;display:flex;align-items:center;justify-content:center;font:600 15px 'Public Sans',sans-serif">${initials(d.name)}</span>` +
+      `<div><div style="font:600 16px 'Public Sans',sans-serif; color:#2b0d15">${d.name}</div>` +
+      `<div style="font:400 12.5px 'Public Sans',sans-serif; color:#8a6f76">${d.commune} · ${d.phone}</div></div>` +
+      `<span style="margin-left:auto; font:700 13px 'Public Sans',sans-serif; color:#c8102e; background:#fbe9ec; padding:6px 11px; border-radius:6px">${d.groupe}</span>` +
+    `</div>` +
+    `<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px">` +
+      `<div style="background:#fff; border:1px solid #f0e4da; border-radius:8px; padding:10px 12px"><div style="font:400 10.5px 'Public Sans',sans-serif; color:#8a6f76">Dernier don</div><div style="font:600 13.5px 'Public Sans',sans-serif; color:#2b0d15">${d.lastDon}</div></div>` +
+      `<div style="background:#fff; border:1px solid #f0e4da; border-radius:8px; padding:10px 12px"><div style="font:400 10.5px 'Public Sans',sans-serif; color:#8a6f76">Langue préférée</div><div style="font:600 13.5px 'Public Sans',sans-serif; color:#2b0d15; text-transform:capitalize">${d.lang}</div></div>` +
+    `</div>` +
+    `<div style="background:#fff; border:1px solid #f0e4da; border-radius:10px; padding:14px; flex:1">` +
+      `<div style="font:600 10.5px 'Public Sans',sans-serif; letter-spacing:.08em; text-transform:uppercase; color:#8a6f76; margin-bottom:10px">Conversation · <span style="text-transform:capitalize">${d.lang}</span></div>` +
+      `<div style="background:#431420; color:#f8ddcb; border-radius:12px 12px 12px 3px; padding:10px 12px; font:400 12.5px/1.5 'Public Sans',sans-serif; margin-bottom:8px">${msg(d.lang, d.ville)}</div>` +
+      (replied ? `<div style="display:flex; justify-content:flex-end"><span style="background:#e7f2ea; color:#2f6e4b; border-radius:12px 12px 3px 12px; padding:8px 14px; font:600 12.5px 'Public Sans',sans-serif">OUI ✓</span></div>` : '') +
+      (sent ? `<div style="font:400 11px 'Public Sans',sans-serif; color:#3d8a5f; text-align:right; animation:floatin .4s ease">✓ SMS envoyé à l'instant</div>` : '') +
+    `</div>` +
+    `<div style="display:flex; gap:8px">` +
+      `<button id="fiche-send" style="flex:1; background:#c8102e; color:#fff; border:none; padding:12px 0; border-radius:6px; font:600 13.5px 'Public Sans',sans-serif; cursor:pointer">Envoyer un SMS</button>` +
+      `<button style="flex:1; background:#fff; color:#431420; border:1.5px solid #431420; padding:12px 0; border-radius:6px; font:600 13.5px 'Public Sans',sans-serif; cursor:pointer">📞 Appeler</button>` +
+    `</div>`;
+  fiche.querySelector('#fiche-send').onclick = () => { state.sentIds[i] = true; renderFiche(); };
+}
+
+// hover-scale for map pins
+document.addEventListener('mouseover', (e) => {
+  const el = e.target.closest('[data-hover-scale]');
+  if (el) el.style.transform = el.getAttribute('data-hover-scale');
+});
+document.addEventListener('mouseout', (e) => {
+  const el = e.target.closest('[data-hover-scale]');
+  if (el) el.style.transform = el.style.transform.replace(' scale(1.05)', '');
+});
+
+// ---- init ----
+renderCampaign();
+renderDonors();
+renderFiche();
+</script>
+</body>
+</html>
