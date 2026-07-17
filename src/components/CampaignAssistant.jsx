@@ -74,8 +74,8 @@ export default function CampaignAssistant() {
   }
 
   return (
-    <div id="campagne" style={s("background:#431420; padding:80px 56px")}>
-      <div style={s("max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1fr 1.15fr; gap:56px; align-items:center")}>
+    <div id="campagne" className="sp-campagne" style={s("background:#431420; padding:80px 56px; box-sizing:border-box")}>
+      <div className="sp-campagne-grid" style={s("max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1fr 1.15fr; gap:56px; align-items:center")}>
         <div>
           <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#e08a96; margin-bottom:16px")}>Fonctionnalité phare</div>
           <h2 style={s("font:600 40px/1.15 'Newsreader',serif; color:#f8ddcb; margin:0 0 18px; text-wrap:pretty")}>Assistance Campagne : une collecte régionale en trois gestes</h2>

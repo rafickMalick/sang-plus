@@ -10,7 +10,7 @@ function DonorRow({ donor, active, onClick }) {
     <div
       className="row-donor"
       onClick={onClick}
-      style={s(`${ROW_COLS}; align-items:center; padding:12px 14px; border-bottom:1px solid #f7efe8; cursor:pointer; background:${active ? '#faf4ee' : '#ffffff'}; border-left:3px solid ${active ? '#c8102e' : 'transparent'}`)}
+      style={s(`${ROW_COLS}; align-items:center; padding:12px 14px; border-bottom:1px solid #f7efe8; cursor:pointer; background:${active ? '#faf4ee' : '#ffffff'}; border-left:3px solid ${active ? '#c8102e' : 'transparent'}; min-width:540px; box-sizing:border-box`)}
     >
       <span style={s("display:flex; align-items:center; gap:10px; min-width:0")}>
         <span style={s("flex:none; width:30px;height:30px;border-radius:50%;background:#f2e8e0;color:#431420;display:flex;align-items:center;justify-content:center;font:600 11.5px 'Public Sans',sans-serif")}>{initials(donor.name)}</span>
@@ -72,7 +72,7 @@ export default function DonorDashboard() {
   const donor = DONORS[selDonor]
 
   return (
-    <div id="outil" style={s("background:#f2e8e0; padding:84px 56px")}>
+    <div id="outil" className="sp-outil" style={s("background:#f2e8e0; padding:84px 56px; box-sizing:border-box")}>
       <div style={s("max-width:1400px; margin:0 auto")}>
         <div style={s("text-align:center; margin-bottom:44px")}>
           <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#c8102e; margin-bottom:14px")}>L'outil au quotidien</div>
@@ -93,13 +93,13 @@ export default function DonorDashboard() {
 
           <div className="sp-dash" style={s("display:grid; grid-template-columns:200px minmax(0,1fr) minmax(280px,340px); min-height:520px")}>
             {/* sidebar */}
-            <div style={s("background:#431420; padding:20px 0; display:flex; flex-direction:column; gap:2px")}>
-              <img src="/assets/logo.png" alt="Sang+" style={s("height:30px; border-radius:6px; display:block; margin:0 0 22px 18px; align-self:flex-start")} />
-              <div style={s("padding:11px 18px; background:#5a2230; color:#f8ddcb; font:600 13.5px 'Public Sans',sans-serif; border-left:3px solid #c8102e")}>Donneurs</div>
+            <div className="sp-dash-sidebar" style={s("background:#431420; padding:20px 0; display:flex; flex-direction:column; gap:2px")}>
+              <img className="sp-dash-sidebar-logo" src="/assets/logo.png" alt="Sang+" style={s("height:30px; border-radius:6px; display:block; margin:0 0 22px 18px; align-self:flex-start")} />
+              <div className="sp-dash-nav sp-dash-nav-active" style={s("padding:11px 18px; background:#5a2230; color:#f8ddcb; font:600 13.5px 'Public Sans',sans-serif; border-left:3px solid #c8102e")}>Donneurs</div>
               {['Campagnes', 'Messages', 'Statistiques'].map((it) => (
-                <div key={it} style={s("padding:11px 18px; color:#c99aa6; font:500 13.5px 'Public Sans',sans-serif; border-left:3px solid transparent; cursor:pointer")}>{it}</div>
+                <div key={it} className="sp-dash-nav" style={s("padding:11px 18px; color:#c99aa6; font:500 13.5px 'Public Sans',sans-serif; border-left:3px solid transparent; cursor:pointer")}>{it}</div>
               ))}
-              <div style={s("margin-top:auto; padding:14px 18px; font:400 11px 'Public Sans',sans-serif; color:#8a5f6b")}>CNTS Cotonou · admin</div>
+              <div className="sp-dash-sidebar-foot" style={s("margin-top:auto; padding:14px 18px; font:400 11px 'Public Sans',sans-serif; color:#8a5f6b")}>CNTS Cotonou · admin</div>
             </div>
 
             {/* table */}
@@ -111,12 +111,14 @@ export default function DonorDashboard() {
                   <span style={s("border:1px solid #e4d4c8; border-radius:6px; padding:8px 12px; font:500 13px 'Public Sans',sans-serif; color:#431420; background:#fff; cursor:pointer")}>Filtres ▾</span>
                 </div>
               </div>
-              <div style={s(`${ROW_COLS}; padding:9px 14px; font:600 10.5px 'Public Sans',sans-serif; letter-spacing:.08em; text-transform:uppercase; color:#8a6f76; border-bottom:1px solid #f0e4da`)}>
-                <span>Nom</span><span>Groupe</span><span>Commune</span><span>Dernier don</span><span>Statut</span>
+              <div style={s("overflow-x:auto")}>
+                <div style={s(`${ROW_COLS}; padding:9px 14px; font:600 10.5px 'Public Sans',sans-serif; letter-spacing:.08em; text-transform:uppercase; color:#8a6f76; border-bottom:1px solid #f0e4da; min-width:540px; box-sizing:border-box`)}>
+                  <span>Nom</span><span>Groupe</span><span>Commune</span><span>Dernier don</span><span>Statut</span>
+                </div>
+                {DONORS.map((d, i) => (
+                  <DonorRow key={d.name} donor={d} active={i === selDonor} onClick={() => setSelDonor(i)} />
+                ))}
               </div>
-              {DONORS.map((d, i) => (
-                <DonorRow key={d.name} donor={d} active={i === selDonor} onClick={() => setSelDonor(i)} />
-              ))}
               <div style={s("display:flex; align-items:center; gap:8px; margin-top:14px; font:400 12px 'Public Sans',sans-serif; color:#8a6f76")}>
                 <span style={s("width:7px;height:7px;border-radius:50%;background:#3d8a5f; animation:pulse 1.6s infinite")}></span>
                 214 réponses « OUI » reçues aujourd'hui · campagne Cotonou en cours

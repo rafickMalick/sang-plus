@@ -1,4 +1,4 @@
-body{margin:0;background:#faf4ee;font-family:'Public Sans',system-ui,sans-serif}
+body{margin:0;background:#faf4ee;font-family:'Public Sans',system-ui,sans-serif;overflow-x:hidden}
 a{color:#8a1c2b;text-decoration:none}
 a:hover{color:#c8102e}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
@@ -12,4 +12,46 @@ button{font-family:inherit}
   .sp-dash{grid-template-columns:200px minmax(0,1fr) !important}
   .sp-fiche{grid-column:1 / -1 !important; border-top:1px solid #f0e4da}
   .sp-table{border-right:none !important}
+}
+@media (max-width:1100px){
+  .sp-hero{grid-template-columns:1fr !important; padding:48px 20px 56px !important; gap:34px !important}
+  .sp-hero-img{height:300px !important}
+  .sp-hero-badge{position:static !important; margin:-28px 0 0 22px !important; width:fit-content}
+}
+@media (max-width:900px){
+  .sp-nav{padding:14px 20px !important}
+  .sp-nav-links{display:none !important}
+  .sp-trust{flex-direction:column !important; align-items:flex-start !important; gap:16px !important; padding:24px 20px !important}
+  .sp-mission{grid-template-columns:1fr !important}
+  .sp-mission-col{border-right:none !important; border-bottom:1px solid rgba(67,20,32,.14); padding:32px 20px !important}
+  .sp-mission-col:last-child{border-bottom:none}
+  .sp-campagne{padding:48px 20px !important}
+  .sp-campagne-grid{grid-template-columns:1fr !important; gap:30px !important}
+  .sp-outil{padding:48px 20px !important}
+  .sp-testimonial{flex-direction:column !important; text-align:center !important; padding:56px 20px !important; gap:22px !important}
+  .sp-photo-quote{height:340px !important}
+  .sp-photo-quote-wrap{padding:0 20px 32px !important}
+  .sp-photo-quote-text{font-size:24px !important}
+  .sp-impact{grid-template-columns:repeat(2,1fr) !important; padding:40px 20px !important; row-gap:28px !important}
+  .sp-impact>div:nth-child(3){border-left:none !important}
+  .sp-partners{flex-direction:column !important; align-items:flex-start !important; gap:16px !important; padding:32px 20px !important}
+  .sp-contact{grid-template-columns:1fr !important; padding:56px 20px !important; gap:28px !important}
+  .sp-contact-img{height:220px !important}
+  .sp-final-cta{padding:48px 20px !important}
+  .sp-final-cta-h2{font-size:27px !important}
+  .sp-footer-outer{padding:44px 20px 0 !important}
+  .sp-footer-grid{grid-template-columns:1fr 1fr !important; gap:32px 20px !important}
+  .sp-footer-bottom{flex-direction:column !important; align-items:flex-start !important; gap:8px !important}
+}
+@media (max-width:700px){
+  .sp-dash{grid-template-columns:1fr !important}
+  .sp-dash-sidebar{flex-direction:row !important; align-items:center; padding:10px 14px !important; gap:2px !important; overflow-x:auto}
+  .sp-dash-sidebar-logo{display:none !important}
+  .sp-dash-nav{border-left:none !important; border-bottom:3px solid transparent !important; white-space:nowrap}
+  .sp-dash-nav-active{border-bottom-color:#c8102e !important}
+  .sp-dash-sidebar-foot{margin-top:0 !important; margin-left:auto !important; white-space:nowrap}
+  .sp-table{border-right:none !important}
+}
+@media (max-width:520px){
+  .sp-footer-grid{grid-template-columns:1fr !important}
 }
