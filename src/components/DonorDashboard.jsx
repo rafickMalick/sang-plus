@@ -99,7 +99,7 @@ export default function DonorDashboard() {
               {['Campagnes', 'Messages', 'Statistiques'].map((it) => (
                 <div key={it} className="sp-dash-nav" style={s("padding:11px 18px; color:#c99aa6; font:500 13.5px 'Public Sans',sans-serif; border-left:3px solid transparent; cursor:pointer")}>{it}</div>
               ))}
-              <div className="sp-dash-sidebar-foot" style={s("margin-top:auto; padding:14px 18px; font:400 11px 'Public Sans',sans-serif; color:#8a5f6b")}>CNTS Cotonou · admin</div>
+              <div className="sp-dash-sidebar-foot" style={s("margin-top:auto; padding:14px 18px; font:400 11px 'Public Sans',sans-serif; color:#8a5f6b")}>ANTS Cotonou · admin</div>
             </div>
 
             {/* table */}

@@ -1,0 +1,62 @@
+{
+  "code": "BJ",
+  "name": "Bénin",
+  "locale": "fr-BJ",
+  "timezone": "Africa/Porto-Novo",
+  "currency": { "code": "XOF", "label": "F CFA" },
+  "phone": {
+    "prefix": "+229",
+    "example": "+229 01 97 12 34 56",
+    "pattern": "^\\+229 ?01( ?\\d{2}){4}$"
+  },
+  "nationalId": {
+    "label": "NPI",
+    "hint": "Numéro personnel d'identification (10 chiffres)",
+    "pattern": "^\\d{10}$",
+    "required": false
+  },
+  "labels": {
+    "national": "ANTS",
+    "nationalLong": "Agence nationale pour la transfusion sanguine",
+    "site": "Antenne",
+    "hospital": "Établissement",
+    "zone": "Commune"
+  },
+  "bloodGroups": ["O+", "O−", "A+", "A−", "B+", "B−", "AB+", "AB−"],
+  "languages": [
+    { "code": "fr", "label": "Français" },
+    { "code": "fon", "label": "Fon" },
+    { "code": "yoruba", "label": "Yoruba" },
+    { "code": "goun", "label": "Goun" },
+    { "code": "bariba", "label": "Bariba" },
+    { "code": "dendi", "label": "Dendi" }
+  ],
+  "templates": {
+    "rappel": {
+      "fr": "Bonjour {prénom}, vous pouvez à nouveau donner votre sang ! Prochaine collecte : {collecte}, {date}. Répondez 1 pour réserver un créneau. — ANTS / Sang+"
+    },
+    "alerte": {
+      "fr": "Urgent {prénom} : les hôpitaux manquent de sang {groupe}. Collecte {collecte}, {date}. Répondez 1 pour réserver un créneau. — ANTS / Sang+"
+    },
+    "rdv": {
+      "fr": "Merci {prénom} ! Rendez-vous confirmé : {collecte}, {date} à {heure}. Pensez à manger avant de venir. — ANTS / Sang+"
+    },
+    "stop": {
+      "fr": "Vous ne recevrez plus de messages de Sang+. Merci pour vos dons. — ANTS"
+    }
+  },
+  "templatesNote": "Seul le français est fourni. Chaque traduction en langue locale doit être validée par des locuteurs natifs avant envoi ; à défaut, le français est utilisé.",
+  "rules": {
+    "minIntervalDays": { "M": 90, "F": 120 },
+    "ageMin": 18,
+    "ageMax": 60,
+    "monthlyContactCap": 2,
+    "reminderHour": 9,
+    "reminderWindowDays": 7,
+    "escalateAfterMinutes": 2,
+    "slotMinutes": 30,
+    "slotCapacity": 6
+  },
+  "rulesNote": "Valeurs de démonstration — à valider avec l'ANTS avant toute mise en service.",
+  "sms": { "bookKeyword": "1", "stopKeyword": "STOP" }
+}

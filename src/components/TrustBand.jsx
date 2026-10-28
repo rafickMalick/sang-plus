@@ -3,7 +3,7 @@ import { s } from '../style.js'
 // Noms d'institutions à titre illustratif (positionnement "conçu pour",
 // pas de revendication de partenariat réel) — remplacer par les vrais
 // logos/partenaires du client si disponibles.
-const INSTITUTIONS = ['Ministères de la Santé', 'CNTS', 'Croix-Rouge', 'Programmes OMS', 'UNICEF']
+const INSTITUTIONS = ['Ministères de la Santé', 'ANTS', 'Croix-Rouge', 'Programmes OMS', 'UNICEF']
 
 export default function TrustBand() {
   return (

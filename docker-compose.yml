@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: sangplus-db
+    environment:
+      POSTGRES_USER: sangplus
+      POSTGRES_PASSWORD: sangplus
+      POSTGRES_DB: sangplus
+    ports:
+      - "5440:5432"
+    volumes:
+      - sangplus-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sangplus"]
+      interval: 5s
+      retries: 10
+
+volumes:
+  sangplus-db:

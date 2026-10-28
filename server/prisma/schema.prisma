@@ -1,0 +1,296 @@
+// Modèle de données Sang+. Tout ce qui est propre à un pays vit dans packs/<code>.json ;
+// la table Country ne stocke que les surcharges éditées depuis l'application.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrgType {
+  NATIONAL // service national de transfusion (ex. ANTS)
+  REGIONAL // niveau intermédiaire facultatif
+  SITE     // site de collecte / antenne
+  HOSPITAL // établissement demandeur, rattaché au site qui le fournit
+}
+
+enum Role {
+  SUPER_ADMIN
+  PILOTE
+  OPERATEUR
+  DEMANDEUR
+}
+
+enum Sex {
+  F
+  M
+}
+
+enum StockLevel {
+  NORMAL
+  BAS
+  CRITIQUE
+}
+
+enum CollecteType {
+  FIXE
+  MOBILE
+}
+
+enum AppointmentStatus {
+  PREVU
+  ARRIVE
+  DON
+  AJOURNE
+  ABSENT
+}
+
+enum AppointmentSource {
+  SMS
+  APPEL
+  SANS_RDV
+}
+
+enum CampaignType {
+  RAPPEL
+  ALERTE
+}
+
+enum Direction {
+  OUT
+  IN
+}
+
+enum MessageStatus {
+  ENVOYE
+  LIVRE
+  RECU
+  ECHEC
+}
+
+enum CallResult {
+  RDV
+  INJOIGNABLE
+  INDISPONIBLE
+  REFUS
+}
+
+enum NeedStatus {
+  TRANSMIS
+  ALERTE
+  CLOS
+}
+
+model Country {
+  code      String   @id
+  name      String
+  active    Boolean  @default(true)
+  rules     Json     @default("{}") // surcharges des règles du pack
+  templates Json     @default("{}") // surcharges des modèles de SMS
+  updatedAt DateTime @updatedAt
+
+  organisations Organisation[]
+  donors        Donor[]
+}
+
+model Organisation {
+  id          String   @id @default(cuid())
+  countryCode String
+  country     Country  @relation(fields: [countryCode], references: [code])
+  type        OrgType
+  name        String
+  shortName   String?
+  city        String?
+  zones       String[] // communes desservies (sites)
+  parentId    String?
+  parent      Organisation?  @relation("OrgTree", fields: [parentId], references: [id])
+  children    Organisation[] @relation("OrgTree")
+  createdAt   DateTime @default(now())
+
+  users        User[]
+  donors       Donor[]
+  stock        StockReading[]
+  collectes    Collecte[]
+  campaigns    Campaign[]
+  callTasks    CallTask[]
+  needsMade    Need[]         @relation("NeedHospital")
+  needsServed  Need[]         @relation("NeedSite")
+  donations    Donation[]
+}
+
+model User {
+  id             String        @id @default(cuid())
+  name           String
+  title          String
+  email          String        @unique
+  role           Role
+  organisationId String?
+  organisation   Organisation? @relation(fields: [organisationId], references: [id])
+  active         Boolean       @default(true)
+  createdAt      DateTime      @default(now())
+
+  audit AuditLog[]
+}
+
+model Donor {
+  id             String    @id @default(cuid())
+  countryCode    String
+  country        Country   @relation(fields: [countryCode], references: [code])
+  siteId         String
+  site           Organisation @relation(fields: [siteId], references: [id])
+  firstName      String
+  lastName       String
+  phone          String    // E.164 sans espaces
+  nationalId     String?
+  bloodGroup     String
+  sex            Sex
+  birthYear      Int?
+  zone           String
+  lang           String    @default("fr")
+  lastDonationAt DateTime?
+  donationCount  Int       @default(0)
+  deferredUntil  DateTime?
+  optOut         Boolean   @default(false)
+  createdAt      DateTime  @default(now())
+
+  donations    Donation[]
+  appointments Appointment[]
+  messages     Message[]
+  callTasks    CallTask[]
+
+  @@unique([countryCode, phone])
+  @@index([siteId, bloodGroup])
+}
+
+model Donation {
+  id             String       @id @default(cuid())
+  donorId        String
+  donor          Donor        @relation(fields: [donorId], references: [id], onDelete: Cascade)
+  siteId         String
+  site           Organisation @relation(fields: [siteId], references: [id])
+  date           DateTime
+  bagNumber      String?
+  confirmedGroup String?
+}
+
+model StockReading {
+  id     String       @id @default(cuid())
+  siteId String
+  site   Organisation @relation(fields: [siteId], references: [id])
+  day    String       // AAAA-MM-JJ, heure locale du pays
+  group  String
+  level  StockLevel
+  at     DateTime     @default(now())
+
+  @@unique([siteId, day, group])
+}
+
+model Collecte {
+  id            String       @id @default(cuid())
+  siteId        String
+  site          Organisation @relation(fields: [siteId], references: [id])
+  type          CollecteType
+  name          String
+  place         String
+  day           String       // AAAA-MM-JJ
+  startMinutes  Int          // minutes depuis minuit
+  slotCount     Int
+  slotMinutes   Int          @default(30)
+  slotCapacity  Int          @default(6)
+  createdAt     DateTime     @default(now())
+
+  appointments Appointment[]
+}
+
+model Appointment {
+  id         String            @id @default(cuid())
+  collecteId String
+  collecte   Collecte          @relation(fields: [collecteId], references: [id], onDelete: Cascade)
+  donorId    String
+  donor      Donor             @relation(fields: [donorId], references: [id], onDelete: Cascade)
+  slotIndex  Int?              // null = sans rendez-vous
+  source     AppointmentSource
+  status     AppointmentStatus @default(PREVU)
+  createdAt  DateTime          @default(now())
+
+  @@unique([collecteId, donorId])
+}
+
+model Campaign {
+  id         String       @id @default(cuid())
+  siteId     String
+  site       Organisation @relation(fields: [siteId], references: [id])
+  type       CampaignType
+  bloodGroup String?
+  zone       String?
+  collecteId String?
+  sent       Int          @default(0)
+  escalated  Boolean      @default(false)
+  createdAt  DateTime     @default(now())
+
+  messages  Message[]
+  callTasks CallTask[]
+  needs     Need[]
+}
+
+model Message {
+  id         String        @id @default(cuid())
+  donorId    String
+  donor      Donor         @relation(fields: [donorId], references: [id], onDelete: Cascade)
+  campaignId String?
+  campaign   Campaign?     @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  direction  Direction
+  kind       String        // rappel | alerte | rdv | stop | libre | reponse
+  body       String
+  status     MessageStatus
+  createdAt  DateTime      @default(now())
+
+  @@index([donorId, createdAt])
+}
+
+model CallTask {
+  id          String       @id @default(cuid())
+  donorId     String
+  donor       Donor        @relation(fields: [donorId], references: [id], onDelete: Cascade)
+  siteId      String
+  site        Organisation @relation(fields: [siteId], references: [id])
+  campaignId  String?
+  campaign    Campaign?    @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  reason      String
+  result      CallResult?
+  resultLabel String?
+  doneAt      DateTime?
+  createdAt   DateTime     @default(now())
+}
+
+model Need {
+  id         String       @id @default(cuid())
+  hospitalId String
+  hospital   Organisation @relation("NeedHospital", fields: [hospitalId], references: [id])
+  siteId     String
+  site       Organisation @relation("NeedSite", fields: [siteId], references: [id])
+  service    String
+  bloodGroup String
+  quantity   Int
+  urgency    String       // Vitale | Urgente | Programmée
+  status     NeedStatus   @default(TRANSMIS)
+  campaignId String?
+  campaign   Campaign?    @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  createdAt  DateTime     @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  entity    String
+  entityId  String?
+  details   Json     @default("{}")
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}

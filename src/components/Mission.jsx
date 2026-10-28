@@ -2,8 +2,8 @@ import { s } from '../style.js'
 
 const ITEMS = [
   { n: '01 — Recenser', t: 'Une base régionale de donneurs', d: 'Groupes sanguins, historique de dons, localisation — une vue fiable des donneurs de chaque région.', border: true },
-  { n: '02 — Sensibiliser', t: 'Des messages santé qui parlent', d: 'Wolof, fon, dendi, yoruba, pulaar… la sensibilisation porte quand elle est dite dans la langue du donneur.', border: true },
-  { n: '03 — Mobiliser', t: 'Des campagnes qui remplissent', d: 'Une collecte régionale se lance en minutes : Sang+ contacte les donneurs par SMS ou appel vocal.', border: false },
+  { n: '02 — Sensibiliser', t: 'Des messages santé qui parlent', d: 'Fon, yoruba, goun, bariba, dendi… la sensibilisation porte quand elle est dite dans la langue du donneur.', border: true },
+  { n: '03 — Mobiliser', t: 'Des campagnes qui remplissent', d: 'Une collecte régionale se lance en minutes : Sang+ contacte les donneurs par SMS, vos agents rappellent ceux qui n’ont pas répondu.', border: false },
 ]
 
 export default function Mission() {

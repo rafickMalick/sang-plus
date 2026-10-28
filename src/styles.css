@@ -14,6 +14,7 @@ button{font-family:inherit}
   .sp-table{border-right:none !important}
 }
 @media (max-width:1100px){
+  .sp-nav-links{display:none !important}
   .sp-hero{grid-template-columns:1fr !important; padding:48px 20px 56px !important; gap:34px !important}
   .sp-hero-img{height:300px !important}
   .sp-hero-badge{position:static !important; margin:-28px 0 0 22px !important; width:fit-content}
@@ -52,6 +53,28 @@ button{font-family:inherit}
   .sp-dash-sidebar-foot{margin-top:0 !important; margin-left:auto !important; white-space:nowrap}
   .sp-table{border-right:none !important}
 }
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(200,16,46,.45)}100%{box-shadow:0 0 0 26px rgba(200,16,46,0)}}
+.hover-cream{transition:background .12s ease}
+.hover-cream:hover{background:#faf4ee !important}
+.btn-red:hover{background:#a50d26 !important}
+@media (max-width:1240px){
+  .sp-call{grid-template-columns:290px minmax(0,1fr) !important}
+  .sp-call-rail{grid-column:1 / -1 !important; border-left:none !important; border-top:1px solid #f0e4da; display:grid !important; grid-template-columns:1fr 1fr; gap:18px !important}
+}
+@media (max-width:900px){
+  .sp-call-outer{padding:48px 20px !important}
+  .sp-call{grid-template-columns:1fr !important}
+  .sp-call-list{border-right:none !important; border-bottom:1px solid #f0e4da}
+  .sp-call-items{max-height:300px !important}
+  .sp-call-rail{grid-template-columns:1fr !important}
+  .sp-call-h2{font-size:30px !important}
+}
 @media (max-width:520px){
+  .sp-call-work{padding:18px 16px !important}
+  .sp-call-head{flex-wrap:wrap}
+  .sp-call-ctrls{gap:8px !important}
+  .sp-call-ctrls button{padding:10px 12px !important}
+  .sp-call-url{padding:6px 14px !important}
+  .sp-nav-demo{display:none !important}
   .sp-footer-grid{grid-template-columns:1fr !important}
 }

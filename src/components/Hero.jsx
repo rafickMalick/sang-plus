@@ -4,9 +4,9 @@ export default function Hero() {
   return (
     <div className="sp-hero" style={s("display:grid; grid-template-columns:1.05fr 1fr; gap:60px; padding:84px 56px 88px; align-items:center; max-width:1400px; margin:0 auto; box-sizing:border-box")}>
       <div>
-        <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#c8102e; margin-bottom:20px")}>Outil des autorités de santé · Bénin · Sénégal · Afrique de l'Ouest</div>
+        <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#c8102e; margin-bottom:20px")}>Outil des autorités de santé · Bénin · Afrique de l'Ouest</div>
         <h1 style={s("font:600 clamp(28px,7vw + 4px,58px)/1.07 'Newsreader',serif; color:#2b0d15; margin:0 0 24px; text-wrap:pretty")}>Chaque poche compte.<br />Chaque donneur aussi.</h1>
-        <p style={s("font:400 17.5px/1.65 'Public Sans',sans-serif; color:#5c4048; margin:0 0 32px; max-width:52ch; text-wrap:pretty")}>Sang+ aide les ministères de la santé, agences et centres de transfusion à <strong style={s("color:#431420")}>recenser, sensibiliser et mobiliser</strong> les donneurs de sang — par SMS et appels vocaux, dans leur langue.</p>
+        <p style={s("font:400 17.5px/1.65 'Public Sans',sans-serif; color:#5c4048; margin:0 0 32px; max-width:52ch; text-wrap:pretty")}>Sang+ aide les ministères de la santé, agences et centres de transfusion à <strong style={s("color:#431420")}>recenser, sensibiliser et mobiliser</strong> les donneurs de sang — par SMS, dans leur langue.</p>
         <div style={s("display:flex; gap:14px; align-items:center; flex-wrap:wrap")}>
           <a href="#contact" style={s("background:#c8102e; color:#fff; padding:15px 28px; border-radius:4px; font:600 15px 'Public Sans',sans-serif")}>Demander une démo</a>
           <a href="#campagne" style={s("border:1.5px solid #431420; color:#431420; padding:14px 26px; border-radius:4px; font:600 15px 'Public Sans',sans-serif")}>Voir l'outil en action</a>

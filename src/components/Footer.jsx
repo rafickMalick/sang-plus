@@ -6,7 +6,7 @@ const COLS = [
     links: [
       { label: 'Assistance Campagne', href: '#campagne' },
       { label: 'Recensement des donneurs', href: '#outil' },
-      { label: 'Messagerie SMS & vocale', href: '#outil' },
+      { label: 'Messagerie SMS', href: '#outil' },
       { label: 'Statistiques', href: '#impact' },
     ],
   },
@@ -42,7 +42,7 @@ export default function Footer() {
           <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.08em; text-transform:uppercase; color:#e08a96; margin-bottom:16px")}>Contact</div>
           <div style={s("display:flex; flex-direction:column; gap:11px; font:400 13.5px 'Public Sans',sans-serif")}>
             <a href="mailto:contact@sang-plus.org" style={s("color:#d9b8a8")}>contact@sang-plus.org</a>
-            <span style={s("color:#a97f8b")}>Bénin · Sénégal</span>
+            <span style={s("color:#a97f8b")}>Bénin · bientôt l’Afrique de l’Ouest</span>
             <a href="#contact" style={s("color:#d9b8a8")}>Demander une démo</a>
           </div>
         </div>

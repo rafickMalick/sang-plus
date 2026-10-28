@@ -4,7 +4,7 @@ const STATS = [
   { v: '12 400', l: 'donneurs recensés', red: false, border: false },
   { v: '38', l: 'campagnes régionales', red: false, border: true },
   { v: '31 200', l: 'poches collectées', red: true, border: true },
-  { v: '6', l: 'langues locales', red: true, border: true },
+  { v: '5', l: 'langues locales', red: true, border: true },
 ]
 
 export default function Impact() {

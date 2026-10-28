@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "api": "npm --prefix server run dev",
+    "db:up": "docker-compose up -d",
+    "db:reset": "npm --prefix server run db:reset",
+    "setup": "npm install && npm --prefix server install && docker-compose up -d && sleep 3 && npm --prefix server run db:push && npm --prefix server run db:seed",
+    "demo": "concurrently -k -n api,web -c red,blue \"npm run api\" \"npm run dev\""
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -14,6 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^5.4.11"
+    "vite": "^5.4.11",
+    "concurrently": "^9.1.0"
   }
 }
