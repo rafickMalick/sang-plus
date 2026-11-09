@@ -62,15 +62,15 @@ export default function CampaignAssistant() {
     <div id="campagne" className="sp-campagne" style={s("background:#431420; padding:80px 56px; box-sizing:border-box")}>
       <div className="sp-campagne-grid" style={s("max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1fr 1.15fr; gap:56px; align-items:center")}>
         <div>
-          <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#e08a96; margin-bottom:16px")}>Fonctionnalité phare</div>
-          <h2 style={s("font:600 40px/1.15 'Newsreader',serif; color:#f8ddcb; margin:0 0 18px; text-wrap:pretty")}>Assistance Campagne : une collecte régionale en trois gestes</h2>
-          <p style={s("font:400 15.5px/1.7 'Public Sans',sans-serif; color:#d9b8a8; margin:0 0 28px; text-wrap:pretty")}>Choisissez la région et la langue. Sang+ envoie le SMS aux donneurs recensés — et vous suivez les réponses en temps réel.</p>
+          <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#e08a96; margin-bottom:16px")}>Alertes ciblées</div>
+          <h2 style={s("font:600 40px/1.15 'Newsreader',serif; color:#f8ddcb; margin:0 0 18px; text-wrap:pretty")}>Remplir une collecte en trois gestes</h2>
+          <p style={s("font:400 15.5px/1.7 'Public Sans',sans-serif; color:#d9b8a8; margin:0 0 28px; text-wrap:pretty")}>Choisissez la collecte et la langue du message. Sang+ prévient les donneurs aptes de la zone, et vous voyez les réservations arriver.</p>
           <div style={s("display:grid; gap:14px; font:400 14.5px/1.5 'Public Sans',sans-serif; color:#f8ddcb")}>
             <div style={s("display:flex; gap:12px")}><span style={s("font:600 15px 'Newsreader',serif; color:#e08a96")}>1.</span>Choisissez la ville de collecte sur la carte du pays</div>
             <div style={s("display:flex; gap:12px")}><span style={s("font:600 15px 'Newsreader',serif; color:#e08a96")}>2.</span>Choisissez la langue du SMS</div>
-            <div style={s("display:flex; gap:12px")}><span style={s("font:600 15px 'Newsreader',serif; color:#e08a96")}>3.</span>Sang+ envoie les SMS et recense les réponses</div>
+            <div style={s("display:flex; gap:12px")}><span style={s("font:600 15px 'Newsreader',serif; color:#e08a96")}>3.</span>Suivez les créneaux réservés en temps réel</div>
           </div>
-          <div style={s("margin-top:26px; font:400 12.5px 'Public Sans',sans-serif; color:#a97f8b")}>Essayez la démo ci-contre — elle est cliquable.</div>
+          <div style={s("margin-top:26px; font:400 12.5px 'Public Sans',sans-serif; color:#a97f8b")}>Essayez la démonstration ci-contre, elle est cliquable. Les chiffres sont fictifs.</div>
         </div>
 
         <div style={s("background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.35)")}>
@@ -78,7 +78,7 @@ export default function CampaignAssistant() {
             <span style={s("width:10px;height:10px;border-radius:50%;background:#e0b4ba")}></span>
             <span style={s("width:10px;height:10px;border-radius:50%;background:#e8cdb9")}></span>
             <span style={s("width:10px;height:10px;border-radius:50%;background:#cdd8c4")}></span>
-            <span style={s("margin-left:8px; font:500 12px 'Public Sans',sans-serif; color:#8a6f76")}>Sang+ · Assistance Campagne</span>
+            <span style={s("margin-left:8px; font:500 12px 'Public Sans',sans-serif; color:#8a6f76")}>Sang+ · Alerte ciblée · démonstration</span>
           </div>
           <div style={s("padding:22px 24px")}>
             {step === 'carte' && (
@@ -122,7 +122,7 @@ export default function CampaignAssistant() {
                   <div style={s("font:400 13px 'Public Sans',sans-serif; color:#5c4048")}>≈ <strong style={s("color:#431420")}>{region.donneurs.toLocaleString('fr-FR')}</strong> donneurs recensés à {region.name} ({region.pays})</div>
                   <span style={s("background:#c8102e; color:#fff; padding:11px 20px; border-radius:4px; font:600 13.5px 'Public Sans',sans-serif; cursor:pointer; white-space:nowrap")}>Lancer la campagne</span>
                 </div>
-                <div style={s("font:400 10.5px 'Public Sans',sans-serif; color:#b09aa0")}>Messages d'exemple — traductions validées avec des locuteurs natifs avant envoi.</div>
+                <div style={s("font:400 10.5px 'Public Sans',sans-serif; color:#b09aa0")}>Messages d'exemple. Une traduction en langue nationale n'est envoyée qu'après relecture par des locuteurs natifs ; sinon, le message part en français.</div>
               </div>
             )}
           </div>

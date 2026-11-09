@@ -65,7 +65,7 @@ export default function CallSpace() {
   const addHist = (st, e) => ({ ...st.history, [i]: [e].concat(st.history[i] || []) })
   const lineBusy = c.phase === 'ringing' || c.phase === 'live'
   const lineColor = lineBusy ? '#e8b078' : '#8fbf8a'
-  const lineName = 'ANTS ' + (ct.ville === 'Parakou' ? 'Parakou' : 'Cotonou')
+  const lineName = 'Antenne ' + (ct.ville === 'Parakou' ? 'Parakou' : 'Cotonou')
   const hasWarn = !!ct.warn
   const warnBg = ct.dispo === 'inelig' ? '#f2e8e0' : '#fdf1dc'
   const warnFg = ct.dispo === 'inelig' ? '#5c4048' : '#7a5414'
@@ -105,8 +105,8 @@ export default function CallSpace() {
     if (ct.dispo === 'dispo' && tpl === 'invit') {
       later(3400, () => setState((st) => ({
         ...st,
-        threads: { ...st.threads, [i]: (st.threads[i] || []).concat([{ dir: 'in', text: 'OUI', time: "à l'instant" }]) },
-        history: { ...st.history, [i]: [{ t: 'SMS · a répondu OUI', m: "À l'instant", tone: 'ok' }].concat(st.history[i] || []) },
+        threads: { ...st.threads, [i]: (st.threads[i] || []).concat([{ dir: 'in', text: '1', time: "à l'instant" }]) },
+        history: { ...st.history, [i]: [{ t: 'SMS · a répondu 1 (créneau réservé)', m: "À l'instant", tone: 'ok' }].concat(st.history[i] || []) },
         statuses: { ...st.statuses, [i]: 'A répondu OUI' },
       })))
     }
@@ -116,9 +116,9 @@ export default function CallSpace() {
     <div id="appel" className="sp-call-outer" style={s("background:#faf4ee; padding:84px 56px; box-sizing:border-box")}>
       <div style={s("max-width:1400px; margin:0 auto")}>
         <div style={s("text-align:center; margin-bottom:40px")}>
-          <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#c8102e; margin-bottom:14px")}>Espace d'appel</div>
-          <h2 className="sp-call-h2" style={s("font:600 40px/1.15 'Newsreader',serif; color:#2b0d15; margin:0 0 12px; text-wrap:pretty")}>Le bon donneur, au bon moment, au bout du fil</h2>
-          <p style={s("font:400 15.5px/1.6 'Public Sans',sans-serif; color:#5c4048; margin:0 auto; max-width:64ch; text-wrap:pretty")}>Filtrez les donneurs disponibles et éligibles, puis appelez-les ou écrivez-leur directement depuis le navigateur. <strong style={s("color:#431420")}>Choisissez un donneur et lancez un appel.</strong></p>
+          <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#c8102e; margin-bottom:14px")}>La liste d'appel</div>
+          <h2 className="sp-call-h2" style={s("font:600 40px/1.15 'Newsreader',serif; color:#2b0d15; margin:0 0 12px; text-wrap:pretty")}>Vos agents rappellent ceux que le SMS n'a pas convaincus</h2>
+          <p style={s("font:400 15.5px/1.6 'Public Sans',sans-serif; color:#5c4048; margin:0 auto; max-width:64ch; text-wrap:pretty")}>Les donneurs aptes qui n'ont pas répondu arrivent dans la liste du jour. L'agent appelle, note le résultat en un clic et propose un créneau. <strong style={s("color:#431420")}>Choisissez un donneur pour essayer.</strong></p>
         </div>
 
         <div style={s("background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 30px 80px rgba(43,13,21,.2); border:1px solid #e4d4c8")}>
@@ -258,7 +258,7 @@ export default function CallSpace() {
                     <div style={s(`${LABEL}; margin-bottom:10px`)}>Script d'appel · <span style={s("text-transform:capitalize")}>{ct.lang}</span></div>
                     <div style={s("display:flex; flex-direction:column; gap:8px; font:400 13.5px/1.5 'Public Sans',sans-serif; color:#5c4048")}>
                       {[
-                        `Se présenter : « Sang+, au nom de l’Antenne ANTS de ${ct.ville} ».`,
+                        `Se présenter : « Bonjour, ici l’antenne de transfusion de ${ct.ville} ».`,
                         `Annoncer la collecte du samedi 14 septembre, 8h–16h — besoin urgent en ${ct.groupe}.`,
                         'Proposer un créneau, confirmer par SMS.',
                       ].map((line, k) => (

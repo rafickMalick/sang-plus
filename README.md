@@ -23,6 +23,17 @@ L'authentification réelle se branchera à cet endroit.
 **SMS** : passerelle simulée, rien n'est envoyé. Le simulateur (super admin) permet de répondre « 1 » ou « STOP »
 à la place d'un donneur.
 
+## Démo en ligne
+
+- **Front** (site + logiciel) : Vercel, déployé à chaque push sur `main`. Le front est statique.
+- **API + base** : Render, décrits dans [render.yaml](render.yaml) (Render > New > Blueprint > ce dépôt).
+- **Lien entre les deux** : sur Vercel, variable d'environnement `VITE_API_URL` = URL du service Render
+  (ex. `https://sang-plus-api.onrender.com`), puis redéployer. Sans elle, le logiciel en ligne appelle `/api`
+  sur Vercel et reçoit des 404.
+
+Offre gratuite Render : l'API s'endort après 15 min sans visite (environ 50 s au premier chargement) et la base
+gratuite expire après 30 jours. Ouvrez le logiciel une minute avant une démonstration.
+
 ## Profils
 
 | Rôle | Périmètre | Écrans |

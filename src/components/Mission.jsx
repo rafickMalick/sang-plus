@@ -1,9 +1,9 @@
 import { s } from '../style.js'
 
 const ITEMS = [
-  { n: '01 — Recenser', t: 'Une base régionale de donneurs', d: 'Groupes sanguins, historique de dons, localisation — une vue fiable des donneurs de chaque région.', border: true },
-  { n: '02 — Sensibiliser', t: 'Des messages santé qui parlent', d: 'Fon, yoruba, goun, bariba, dendi… la sensibilisation porte quand elle est dite dans la langue du donneur.', border: true },
-  { n: '03 — Mobiliser', t: 'Des campagnes qui remplissent', d: 'Une collecte régionale se lance en minutes : Sang+ contacte les donneurs par SMS, vos agents rappellent ceux qui n’ont pas répondu.', border: false },
+  { n: '01 — Fidéliser', t: 'Chaque donneur rappelé au bon moment', d: 'Sang+ calcule l’aptitude à partir de la date du dernier don et de vos règles nationales. Le donneur reçoit un SMS le matin où il peut donner à nouveau.', border: true },
+  { n: '02 — Cibler', t: 'Des alertes par groupe et par commune', d: 'Quand un groupe est en tension, l’alerte vise les donneurs aptes de ce groupe dans une commune, jamais tout le fichier. Un plafond mensuel évite de lasser les donneurs.', border: true },
+  { n: '03 — Remplir les collectes', t: 'Des créneaux plutôt que des files d’attente', d: 'Le donneur répond « 1 » pour réserver un créneau. Ceux qui n’ont pas répondu passent dans la liste d’appel de vos agents de recrutement.', border: false },
 ]
 
 export default function Mission() {

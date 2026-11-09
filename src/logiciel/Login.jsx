@@ -12,7 +12,9 @@ export default function Login({ onEnter }) {
   useEffect(() => {
     api.get('/demo/users')
       .then((u) => { setUsers(u); setSel((u.find((x) => x.role === 'PILOTE' && x.organisation.includes('Cotonou')) || u[0])?.id) })
-      .catch(() => setError('L’API Sang+ ne répond pas. Lancez-la avec « npm run api » puis rechargez la page.'))
+      .catch(() => setError(import.meta.env.DEV
+        ? 'L’API Sang+ ne répond pas. Lancez-la avec « npm run api » puis rechargez la page.'
+        : 'Le serveur de démonstration ne répond pas pour le moment. Réessayez dans une minute, ou écrivez-nous à contact@sang-plus.org.'))
   }, [])
 
   return (
@@ -21,7 +23,7 @@ export default function Login({ onEnter }) {
         <img src="/assets/photo-don-1.png" alt="Collecte de sang" style={s("position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block")} />
         <div style={s("position:absolute; inset:0; background:linear-gradient(to top, rgba(43,13,21,.95) 15%, rgba(43,13,21,.25))")}></div>
         <div style={s("position:absolute; left:56px; right:56px; bottom:56px; color:#f8ddcb; display:flex; flex-direction:column; gap:18px")}>
-          <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#f0a6b0")}>Plateforme nationale · ANTS Bénin</div>
+          <div style={s("font:600 12px 'Public Sans',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#f0a6b0")}>Démonstration · Bénin</div>
           <div style={s("font:600 40px/1.15 'Newsreader',serif; max-width:17ch; text-wrap:pretty")}>Plus de donneurs qui reviennent.</div>
           <div style={s("display:flex; flex-direction:column; gap:8px; font:400 14.5px/1.5 'Public Sans',sans-serif; color:#e8cbbd; max-width:46ch")}>
             <span>Rappel automatique dès qu'un donneur redevient apte.</span>

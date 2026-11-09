@@ -9,10 +9,10 @@ export const REGIONS = [
 
 export function msg(lang, ville) {
   const M = {
-    fon:        `Mi kudo ! Sang+ : don de sang ɖo ${ville}, samedi 14 septembre. Hùn towe sixu hwlɛn gbɛ 3. Yi gbè OUI.`,
-    yoruba:     `Ẹ kú ọjọ́ ! Sang+ : ìpolongo ìtọrẹ ẹ̀jẹ̀ ní ${ville}, Sátidé 14 sept. Ẹ̀jẹ̀ yín lè gba ẹ̀mí mẹ́ta là. Fèsì OUI.`,
-    dendi:      `Fofo ! Sang+ : campagne don de sang ${ville}, asibiti 14 septembre. Kuri ni ga hin ka fundi hinza faaba. Tuuru OUI.`,
-    'français': `Bonjour ! Sang+ : campagne de don de sang à ${ville}, samedi 14 septembre, 8h–16h. Votre don peut sauver 3 vies. Répondez OUI pour vous inscrire.`,
+    fon:        `Mi kudo ! Sang+ : don de sang ɖo ${ville}, samedi 14 septembre. Hùn towe sixu hwlɛn gbɛ 3. Yi gbè 1.`,
+    yoruba:     `Ẹ kú ọjọ́ ! Sang+ : ìpolongo ìtọrẹ ẹ̀jẹ̀ ní ${ville}, Sátidé 14 sept. Ẹ̀jẹ̀ yín lè gba ẹ̀mí mẹ́ta là. Fèsì 1.`,
+    dendi:      `Fofo ! Sang+ : campagne don de sang ${ville}, asibiti 14 septembre. Kuri ni ga hin ka fundi hinza faaba. Tuuru 1.`,
+    'français': `Bonjour ! Collecte de sang à ${ville}, samedi 14 septembre, 8h–16h. Votre don peut sauver 3 vies. Répondez 1 pour réserver un créneau.`,
   }
   return M[lang] || M['français']
 }
@@ -41,8 +41,8 @@ export const ST_COLORS = {
 // Donneurs de l'Espace d'appel (section #appel).
 export const CONTACTS = [
   { name: 'Bisola Adéoti', groupe: 'O+', commune: 'Cotonou-Fidjrossè', ville: 'Cotonou', lang: 'yoruba', phone: '+229 01 96 12 45 67', operator: 'MTN Bénin', dispo: 'dispo', availText: "Disponible · jusqu'à 18h", hours: 'Lun–Sam, 9h–18h', levelName: 'Fidèle', dons: 9, lastDon: 'il y a 4 mois', nextDon: 'Oui', status: 'A répondu OUI',
-    seed: [{ dir: 'out', key: 'invit', time: 'Hier 10:12' }, { dir: 'in', text: 'OUI', time: 'Hier 10:40' }],
-    hist: [{ t: 'SMS · a répondu OUI', m: 'Hier, 10:40', tone: 'ok' }, { t: 'Don à Cotonou-Fidjrossè', m: 'Juin 2026', tone: 'red' }, { t: 'Appel · 2 min · inscrite', m: 'Juin 2026', tone: 'ok' }] },
+    seed: [{ dir: 'out', key: 'invit', time: 'Hier 10:12' }, { dir: 'in', text: '1', time: 'Hier 10:40' }],
+    hist: [{ t: 'SMS · a répondu 1 (créneau réservé)', m: 'Hier, 10:40', tone: 'ok' }, { t: 'Don à Cotonou-Fidjrossè', m: 'Juin 2026', tone: 'red' }, { t: 'Appel · 2 min · inscrite', m: 'Juin 2026', tone: 'ok' }] },
   { name: 'Sègbè Hounkpatin', groupe: 'O−', commune: 'Cotonou-Cadjèhoun', ville: 'Cotonou', lang: 'fon', phone: '+229 01 66 05 77 91', operator: 'MTN Bénin', dispo: 'dispo', availText: 'Disponible · toute la journée', hours: 'Tous les jours, 8h–20h', levelName: 'Régulier', dons: 4, lastDon: 'il y a 11 mois', nextDon: 'Oui', status: 'À contacter',
     seed: [], hist: [{ t: 'Don à Cotonou', m: 'Nov. 2025', tone: 'red' }, { t: 'Inscription via campagne radio', m: 'Mars 2024', tone: 'muted' }] },
   { name: 'Adjara Boni', groupe: 'AB+', commune: 'Parakou-Zongo', ville: 'Parakou', lang: 'dendi', phone: '+229 01 94 31 60 27', operator: 'Moov Africa Bénin', dispo: 'dispo', availText: 'Disponible · après 14h', hours: 'Lun–Ven, 14h–19h', levelName: 'Fidèle', dons: 12, lastDon: 'il y a 5 mois', nextDon: 'Oui', status: 'Contacté',
@@ -64,7 +64,7 @@ export const CONTACTS = [
 
 export function tplText(key, ct) {
   const first = ct.name.split(' ')[0]
-  if (key === 'rappel') return 'Rappel Sang+ : ' + first + ', votre rendez-vous de don est demain à 9h à l’Antenne ANTS de ' + ct.ville + '. Pensez à bien manger avant. Répondez STOP pour annuler.'
-  if (key === 'merci') return 'Merci ' + first + " ! Votre don a été transmis à l'hôpital de " + ct.ville + '. Vous pourrez donner à nouveau dans 3 mois. — Sang+'
+  if (key === 'rappel') return 'Rappel : ' + first + ', votre rendez-vous de don est demain à 9h à l’antenne de transfusion de ' + ct.ville + '. Pensez à bien manger avant. Répondez STOP pour ne plus recevoir de messages.'
+  if (key === 'merci') return 'Merci ' + first + ' pour votre don ! Nous vous préviendrons dès que vous pourrez donner à nouveau. — Sang+'
   return msg(ct.lang, ct.ville)
 }

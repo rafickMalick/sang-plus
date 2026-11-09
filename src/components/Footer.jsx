@@ -4,18 +4,17 @@ const COLS = [
   {
     title: 'Produit',
     links: [
-      { label: 'Assistance Campagne', href: '#campagne' },
-      { label: 'Recensement des donneurs', href: '#outil' },
-      { label: 'Messagerie SMS', href: '#outil' },
-      { label: 'Statistiques', href: '#impact' },
+      { label: 'Alertes ciblées', href: '#campagne' },
+      { label: 'Registre des donneurs', href: '#outil' },
+      { label: "Liste d'appel", href: '#appel' },
+      { label: 'Garanties', href: '#impact' },
     ],
   },
   {
     title: 'Ressources',
     links: [
-      { label: 'Guide de déploiement', href: '#contact' },
-      { label: 'Étude de cas régionale', href: '#contact' },
-      { label: 'La mission', href: '#mission' },
+      { label: 'Comment ça marche', href: '#mission' },
+      { label: 'Demander une démonstration', href: '#contact' },
     ],
   },
 ]
@@ -26,7 +25,7 @@ export default function Footer() {
       <div className="sp-footer-grid" style={s("max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(248,221,203,.12); box-sizing:border-box")}>
         <div>
           <img src="/assets/logo.png" alt="Sang+" style={s("height:34px; border-radius:6px; display:block; margin-bottom:14px")} />
-          <div style={s("font:400 13px/1.6 'Public Sans',sans-serif; color:#a97f8b; max-width:32ch")}>L'outil de recensement, sensibilisation et mobilisation des donneurs de sang pour les autorités de santé d'Afrique de l'Ouest.</div>
+          <div style={s("font:400 13px/1.6 'Public Sans',sans-serif; color:#a97f8b; max-width:32ch")}>L'outil de fidélisation des donneurs bénévoles pour les services de transfusion sanguine.</div>
         </div>
         {COLS.map((col) => (
           <div key={col.title}>
@@ -48,8 +47,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="sp-footer-bottom" style={s("max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:20px 0; font:400 12.5px 'Public Sans',sans-serif; color:#8a5f6b; box-sizing:border-box")}>
-        <span>© 2026 Sang+ — Outil de mobilisation des donneurs de sang</span>
-        <span>Fait avec les centres nationaux de transfusion sanguine</span>
+        <span>© 2026 Sang+ — Fidélisation des donneurs de sang</span>
+        <span>Conçu pour le Bénin</span>
       </div>
     </div>
   )
